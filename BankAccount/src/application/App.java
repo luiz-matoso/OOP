@@ -1,6 +1,7 @@
 package application;
 import java.util.Scanner;
 
+import entities.BankAccount;
 import entities.Customer;
 import services.BankService;
 import services.InformationService;
@@ -26,9 +27,9 @@ public class App {
         System.out.print("Enter your age: ");
         Integer age = sc.nextInt();
 
-        Double balance = 0.0;
+        BankAccount bankAccount = new BankAccount(accountNumber, null);
 
-        customer = new Customer(accountNumber, name, age, balance);
+        customer = new Customer(accountNumber, name, age, bankAccount);
 
         while (bankMenu) {
             System.out.println();
@@ -49,17 +50,17 @@ public class App {
                     System.out.println();
                     System.out.print("Enter amount to deposit: ");
                     Double depositAmount = sc.nextDouble();
-                    bankService.deposit(customer, depositAmount);
+                    bankService.deposit(customer.getBankAccount(), depositAmount);
                     break;
                 case 2:
                     System.out.println();
-                    System.out.println("Enter amount to withdraw: ");
+                    System.out.print("Enter amount to withdraw: ");
                     Double withdrawAmount = sc.nextDouble();
-                    bankService.withdraw(customer, withdrawAmount);
+                    bankService.withdraw(customer.getBankAccount(), withdrawAmount);
                     break;
                 case 3:
                     System.out.println();
-                    System.out.println(customer.getName()  + ", your updated balance: $ " + customer.getBalance());
+                    System.out.println(customer.getName()  + ", your updated balance: $ " + customer.getBankAccount().getBalance());
                     System.out.println();
                     break;
                 case 4:
@@ -69,7 +70,7 @@ public class App {
                     Integer barcode = sc.nextInt();
                     System.out.print("Enter the value of the bill: ");
                     Double billValue = sc.nextDouble();
-                    bankService.payBills(customer, billValue);
+                    bankService.payBills(customer.getBankAccount(), billValue);
                     break;
                 case 5:
                     informationService.updateInformation(customer, sc);

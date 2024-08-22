@@ -1,45 +1,45 @@
 package services;
 
-import entities.Customer;
+import entities.BankAccount;
 
 public class BankService {
 
-    public void deposit(Customer customer, Double amount){
+    public void deposit(BankAccount bankAccount, Double amount){
         if (amount <= 0) {
             System.out.println("Invalid! Deposit must be more than 0");
         } 
-        customer.setBalance(customer.getBalance() + amount);
-        System.out.println("Deposit success ! Your balance: $ " + customer.getBalance());
+        bankAccount.setBalance(bankAccount.getBalance() + amount);
+        System.out.println("Deposit success ! Your balance: $ " + bankAccount.getBalance());
         System.out.println();
     }
 
-    public void withdraw(Customer customer, Double amount){
+    public void withdraw(BankAccount bankAccount, Double amount){
         if (amount <= 0){
             System.out.println("Invalid! Witdhraw must be more than 0.");
         }
-        if (amount >= customer.getBalance()){
+        if (amount >= bankAccount.getBalance()){
             System.out.println("Error! Insuficient balance.");
         }
-        customer.setBalance(customer.getBalance() - amount);
-        System.out.println("Success withdraw! Your balance: $ " + customer.getBalance());
+        bankAccount.setBalance(bankAccount.getBalance() - amount);
+        System.out.println("Success withdraw! Your balance: $ " + bankAccount.getBalance());
         System.out.println();
     }
 
-    public void payBills(Customer customer, Double billValue){
+    public void payBills(BankAccount bankAccount, Double billValue){
         if (billValue <= 0) {
             System.out.println();
             System.out.println("Invalid! Bill value must be more than 0.");
             System.out.println();
         }  
-        if (billValue > customer.getBalance()) {
+        if (billValue > bankAccount.getBalance()) {
             System.out.println();
             System.out.println("Invalid! Bill is higher than your balance.");
             System.out.println();
         }
-        if (billValue <= customer.getBalance()){
-            customer.setBalance(customer.getBalance() - billValue);
+        if (billValue <= bankAccount.getBalance()){
+            bankAccount.setBalance(bankAccount.getBalance() - billValue);
             System.out.println();
-            System.out.println("Succes! Your balance: $ " + customer.getBalance());
+            System.out.println("Succes! Your balance: $ " + bankAccount.getBalance());
             System.out.println();
         }
 

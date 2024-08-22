@@ -5,13 +5,13 @@ public class Customer {
     private Integer accountNumber;
     private String name;
     private Integer age;
-    private Double balance;
-    
-    public Customer(Integer accountNumber, String name, Integer age, Double balance) {
+    private BankAccount bankAccount;
+
+    public Customer(Integer accountNumber, String name, Integer age, BankAccount bankAccount) {
         this.accountNumber = accountNumber;
         this.name = name.toUpperCase();
         this.age = age;
-        this.balance = balance;
+        this.bankAccount = bankAccount;
     }
 
     public Integer getAccountNumber() {
@@ -23,7 +23,7 @@ public class Customer {
     }
 
     public String getName() {
-        return name;
+        return name.toUpperCase();
     }
 
     public void setName(String name) {
@@ -38,12 +38,16 @@ public class Customer {
         this.age = age;
     }
 
-    public Double getBalance() {
-        return balance;
+    public BankAccount getBankAccount() {
+        return bankAccount;
     }
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
+
+    
+    
+    
 
 }
